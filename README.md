@@ -1,3 +1,7 @@
+__This is a fork of https://github.com/jkarlosb/git-server-docker__
+
+You can change the default port by setting `SSH_PORT` during the building process -> `docker build --build-arg "SSH_PORT=2222" . -t git-server-docker:my_version` 
+
 # git-server-docker
 A lightweight Git Server Docker image built with Alpine Linux. Available on [GitHub](https://github.com/jkarlosb/git-server-docker) and [Docker Hub](https://hub.docker.com/r/jkarlos/git-server-docker/)
 

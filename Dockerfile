@@ -1,6 +1,8 @@
 FROM alpine:3.4
 
-MAINTAINER Carlos Bernárdez "carlos@z4studios.com"
+ARG SSH_PORT=22
+
+MAINTAINER Daniel Fariña "docker@danielfh.es"
 
 # "--no-cache" is new in Alpine 3.3 and it avoid using
 # "--update + rm -rf /var/cache/apk/*" (to remove cache)
@@ -34,8 +36,11 @@ COPY git-shell-commands /home/git/git-shell-commands
 
 # sshd_config file is edited for enable access key and disable access password
 COPY sshd_config /etc/ssh/sshd_config
+
+RUN echo "Port ${SSH_PORT}" >> /etc/ssh/sshd_config
+
 COPY start.sh start.sh
 
-EXPOSE 22
+EXPOSE ${SSH_PORT}
 
 CMD ["sh", "start.sh"]
